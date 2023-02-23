@@ -1,0 +1,16 @@
+version: "3"
+services:
+  todoapp:
+    build: ./web-frontend
+    ports:
+     - "3000"
+    depends_on:
+     - redis-master
+     - redis-slave
+  redis-slave:
+    build: ./redis-slave
+    depends_on:
+     - redis-master
+  redis-master:
+    build: ./redis-master
+
